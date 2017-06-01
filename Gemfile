@@ -64,6 +64,7 @@ gem 'whenever', require: false # provides a clear syntax for writing and deployi
 gem 'whenever-web'
 
 # Debugging (need at top level if we want pry-remote to work on a deployed prod server)
+gem 'pry'
 gem 'pry-awesome_print' # make pry output legible
 gem 'pry-byebug' # stepwise debugging inside pry
 gem 'pry-rails' # better REPL than irb

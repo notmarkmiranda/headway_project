@@ -5,8 +5,15 @@ module Admin
 
     def index
       @users = User.all
-
       respond_with(@users)
+    end
+
+    def new
+      @user = User.new
+    end
+
+    def create
+      require 'pry'; binding.pry
     end
 
     def impersonate

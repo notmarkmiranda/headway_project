@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   describe 'constants' do
     context 'roles' do
       it 'has the admin role' do
-        expect(User::ROLES).to eq([:admin])
+        expect(User::ROLES).to eq([:admin, :accountant])
       end
     end
   end
