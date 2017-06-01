@@ -688,6 +688,7 @@ DEPENDENCIES
   pg
   poltergeist
   pretender
+  pry
   pry-awesome_print
   pry-byebug
   pry-rails
