@@ -17,16 +17,16 @@ feature 'Admin creates user from browser' do
     visit new_admin_user_path
 
     within '.form-inputs' do
-      fill_in 'First Name', with: "mark"
-      fill_in 'Last Name', with: "miranda"
+      fill_in 'First Name', with: 'mark'
+      fill_in 'Last Name', with: 'miranda'
 
-      fill_in 'E-Mail Address', with: "mark@miranda.com"
-      fill_in 'Password', with: "password"
-      fill_in 'Password Confirmation', with: "password"
+      fill_in 'E-Mail Address', with: 'mark@miranda.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
     end
 
     click_button 'Create User'
 
-    expect(page).to have_content("mark@miranda.com")
+    expect(page).to have_content('mark@miranda.com')
   end
 end

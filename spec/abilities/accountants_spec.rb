@@ -7,7 +7,7 @@ describe Canard::Abilities, '#accountants' do
   subject(:accountant_ability) { Ability.new(acting_accountant) }
 
   describe 'on User' do
-    let (:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     it { is_expected.to be_able_to(:manage, acting_accountant) }
     it { is_expected.to_not be_able_to(:manage, user) }

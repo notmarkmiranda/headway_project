@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   # Permissions cascade/inherit through the roles listed below. The order of
   # this list is important, it should progress from least to most privelage
-  ROLES = [:admin, :accountant].freeze
+  ROLES = %i[admin accountant].freeze
   acts_as_user roles: ROLES
   roles ROLES
 
@@ -35,7 +35,9 @@ class User < ApplicationRecord
   end
 
   def roles=(roles)
-    self.roles_mask = (roles.map(&:to_sym) & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+    self.roles_mask = (roles.map(&:to_sym) & ROLES).map do |r|
+      2**ROLES.index(r)
+    end.inject(0, :+)
   end
 
   def roles

@@ -42,7 +42,8 @@ module Admin
     private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :roles => [])
+      params.require(:user).permit(:first_name, :last_name, :email, :password,
+                                   :password_confirmation, roles: [])
     end
 
     def track_impersonation(user, status)
