@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  attr_accessor :roles
   acts_as_token_authenticatable
 
   # Include default devise modules. Others available are:
@@ -33,22 +32,6 @@ class User < ApplicationRecord
   def tester?
     (email =~ /(example.com|headway.io)$/).present?
   end
-
-  def roles=(roles)
-    self.roles_mask = (roles.map(&:to_sym) & ROLES).map do |r|
-      2**ROLES.index(r)
-    end.inject(0, :+)
-  end
-
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
-    end
-  end
-
-  # def is?(role)
-  #   roles.include?(role.to_s)
-  # end
 
   private
 

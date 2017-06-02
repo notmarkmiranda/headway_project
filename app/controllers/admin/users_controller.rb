@@ -17,7 +17,7 @@ module Admin
       if @user.save
         redirect_to admin_user_path(@user)
       else
-        flash.now[:alert] = @user.errors.full_messages.join(", ")
+        flash.now[:alert] = @user.errors.full_messages.join(', ')
         render :new
       end
     end
