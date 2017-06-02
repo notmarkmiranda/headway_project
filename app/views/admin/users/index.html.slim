@@ -10,6 +10,8 @@ table
       th
         | Email
       th
+        | Roles
+      th
       th
       th
   tbody
@@ -21,6 +23,8 @@ table
           = user.last_name
         td
           = link_to user.email, impersonate_admin_user_path(user)
+        td
+          = user.roles(&:to_s).join(", ")
         td
           = link_to 'Show', user
         td

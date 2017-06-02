@@ -13,7 +13,7 @@ div
       = f.text_field :email
       
       = f.label :roles, "Roles"
-      - User::ROLES.each_with_index do |role|
+      - User::ROLES.each do |role|
         .checkboxes
           = check_box_tag 'user[roles][#{role}]', role, @user.roles.include?(role), {:name => "user[roles][]"}
           = label_tag "user_roles_#{role}", role.to_s.humanize
