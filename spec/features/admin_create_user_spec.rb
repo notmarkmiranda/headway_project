@@ -29,4 +29,24 @@ feature 'Admin creates user from browser' do
 
     expect(page).to have_content('mark@miranda.com')
   end
+
+  scenario 'with admin privileges, sad path' do
+    user = create(:user, :admin)
+
+    sign_in(user.email, user.password)
+    visit new_admin_user_path
+
+    within '.form-inputs' do
+      fill_in 'First Name', with: 'mark'
+      fill_in 'Last Name', with: 'miranda'
+
+      fill_in 'E-Mail Address', with: 'mark@miranda.com'
+      fill_in 'Password', with: 'password1'
+      fill_in 'Password Confirmation', with: 'password'
+    end
+
+    click_button 'Create User'
+
+    expect(page).to have_content("Password confirmation doesn't match Password")
+  end
 end
