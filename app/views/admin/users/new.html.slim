@@ -1,15 +1,28 @@
 h1
   | New User
 div
-  = form_for(@user) do |f|
-    = f.label :first_name, "First Name"
-    = f.text_field :first_name
-    = f.label :last_name, "Last Name"
-    = f.text_field :last_name
-    = f.label :email, "E-Mail Address"
-    = f.text_field :email
-    = f.label :password, "Password"
-    = f.password_field :password
-    = f.label :password, "Password Confirmation"
-    = f.password_field :password_confirmation
-    = f.submit "Create User"
+  = simple_form_for(@user, url: admin_users_path) do |f|
+    .form-inputs
+      = f.label :first_name, "First Name"
+      = f.text_field :first_name
+      
+      = f.label :last_name, "Last Name"
+      = f.text_field :last_name
+      
+      = f.label :email, "E-Mail Address"
+      = f.text_field :email
+      
+      = f.label :roles, "Roles"
+      - User::ROLES.each_with_index do |role|
+        .checkboxes
+          = check_box_tag 'user[roles][#{role}]', role, @user.roles.include?(role), {:name => "user[roles][]"}
+          = label_tag "user_roles_#{role}", role.to_s.humanize
+        = hidden_field_tag "user[roles][]", ""      
+          
+      = f.label :password, "Password"
+      = f.password_field :password
+      
+      = f.label :password, "Password Confirmation"
+      = f.password_field :password_confirmation
+    .form-actions
+      = f.submit "Create User"
