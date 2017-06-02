@@ -22,6 +22,10 @@ module Admin
       end
     end
 
+    def show
+      @user = User.find(params[:id])
+    end
+
     def impersonate
       user = User.find(params[:id])
       track_impersonation(user, 'Start')
