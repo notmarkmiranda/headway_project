@@ -24,7 +24,7 @@ table.users-table
         td
           = link_to user.email, impersonate_admin_user_path(user)
         td
-          = user.roles(&:to_s).join(", ")
+          = user.roles.map(&:to_s).join(', ')
         td
           = link_to 'Show', user
         td

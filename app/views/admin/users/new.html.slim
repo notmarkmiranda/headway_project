@@ -5,23 +5,23 @@ div
     .form-inputs
       = f.label :first_name, "First Name"
       = f.text_field :first_name
-      
+
       = f.label :last_name, "Last Name"
       = f.text_field :last_name
-      
+
       = f.label :email, "E-Mail Address"
       = f.text_field :email
-      
+
       = f.label :roles, "Roles"
       - User::ROLES.each do |role|
         .checkboxes
-          = check_box_tag 'user[roles][#{role}]', role, @user.roles.include?(role), {:name => "user[roles][]"}
+          = check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {name: 'user[roles][]'}
           = label_tag "user_roles_#{role}", role.to_s.humanize
-        = hidden_field_tag "user[roles][]", ""      
-          
+        = hidden_field_tag "user[roles][]", ""
+
       = f.label :password, "Password"
       = f.password_field :password
-      
+
       = f.label :password_confirmation, "Password Confirmation"
       = f.password_field :password_confirmation
     .form-actions
